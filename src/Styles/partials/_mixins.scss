@@ -1,0 +1,63 @@
+@import "breakPoints";
+
+/**
+ * A mixin for creating responsive styles based on breakpoints.
+ *
+ * @param {string} $breakPoint - The breakpoint identifier (e.g., "md").
+ *
+ * @example
+ * // Usage:
+ * @include responsive("md") {
+ *   color: red;
+ * }
+ *
+ * @note This mixin is used to apply styles within a specific breakpoint range.
+ * If the specified breakpoint is not supported, a warning is issued.
+ */
+
+@mixin responsive($breakPoint) {
+  $breakPoints: (
+    "xs": $xs,
+    "sm": $sm,
+    "md": $md,
+    "lg": $lg,
+    "xl": $xl,
+  );
+  @if map-has-key($breakPoints, $breakPoint) {
+    $breakPointValue: map-get($breakPoints, $breakPoint);
+    @media (max-width: $breakPointValue) {
+      @content;
+    }
+  } @else {
+    @warn "BreakPoint #{$breakPoint} is not supported. Supported BreakPoints are: #{map-keys($breakPoints)}";
+  }
+}
+
+/**
+ * A mixin to create a responsive container with customizable padding.
+ *
+ * @param {string} $padding - The padding value to apply.
+ *
+ * @example
+ * // Usage:
+ * @include container(120px)
+ */
+
+@mixin container($padding: 80px) {
+  width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include responsive("xl") {
+    width: 100%;
+    padding-inline: $padding;
+  }
+
+  @include responsive("lg") {
+    padding-inline: 40px;
+  }
+
+  @include responsive("md") {
+    padding-inline: 20px;
+  }
+}

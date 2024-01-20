@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Ubuntu:wght@300;400;500;700&display=swap");
+@import "partials/breakPoints";
+@import "partials/inheritance";
+@import "partials/mixins";
+@import "partials/overwrite";
+@import "partials/pseudo";
 
 :root {
   font-family: "Ubuntu", sans-serif;
@@ -17,12 +22,20 @@
 * {
   margin: 0;
   padding: 0;
+  border: 0;
   box-sizing: border-box;
+  outline: none;
+  list-style: none;
   transition: all 0.2s ease;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   min-height: 100dvh;
   color: var(--textColor);
   background-color: var(--bgColor);
+  overflow-x: hidden;
 }
