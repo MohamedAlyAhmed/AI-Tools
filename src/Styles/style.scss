@@ -1,9 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Ubuntu:wght@300;400;500;700&display=swap");
 @import "partials/breakPoints";
+@import "partials/fonts";
 @import "partials/inheritance";
 @import "partials/mixins";
 @import "partials/overwrite";
 @import "partials/pseudo";
+@import "partials/variables";
 
 :root {
   font-family: "Ubuntu", sans-serif;
@@ -12,21 +13,22 @@
   -moz-osx-font-smoothing: grayscale;
   --bgColor: #fafafa;
   --textColor: #242424;
+  --borderColor: #d3d3d3;
 }
 
 [data-theme="dark"] {
   --bgColor: #242424;
   --textColor: #fafafa;
+  --borderColor: #d3d3d3;
 }
 
 * {
   margin: 0;
   padding: 0;
   border: 0;
-  box-sizing: border-box;
   outline: none;
-  list-style: none;
-  transition: all 0.2s ease;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
 html {
@@ -34,8 +36,58 @@ html {
 }
 
 body {
+  max-width: 100%;
   min-height: 100dvh;
   color: var(--textColor);
   background-color: var(--bgColor);
   overflow-x: hidden;
+}
+
+button {
+  outline: none;
+  border: none;
+  background: transparent;
+  color: $textColor;
+  &:focus,
+  &:active,
+  &:hover {
+    outline: none;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+input {
+  outline: none;
+  border: none;
+  &:focus,
+  &:active,
+  &:hover {
+    outline: none;
+    border: none;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  &:hover,
+  &:link,
+  &:visited,
+  &:focus,
+  &:active {
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+  }
+}
+
+.no-select {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }

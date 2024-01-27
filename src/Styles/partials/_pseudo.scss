@@ -9,9 +9,3 @@
 ::-webkit-scrollbar-thumb {
   background-color: #4b4b4b;
 }
-
-a {
-  :is(:focus, :hover) {
-    text-decoration: none;
-  }
-}
